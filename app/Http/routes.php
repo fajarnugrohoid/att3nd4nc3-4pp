@@ -13,12 +13,17 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('home', 'HomeController@index');
+
+Route::get('attendance', 'AttendanceController@index');
+
+Route::get('employee', 'EmployeeController@index');
+
 
 Route::get('/halamanku', 'WelcomeController@showHalaman');
 
@@ -30,8 +35,8 @@ Route::get('/cobamodel', function()
 });
 
 Route::get('relasi', function() {
-# Temukan anggota yang bernama akhmad Dharma Kasman
-$anggota = App\Anggota::where('nama', '=', 'Akhmad Dharma Kasman')->first();
+# Temukan anggota yang bernama xxx
+$anggota = App\Anggota::where('nama', '=', 'xxx')->first();
 echo $anggota->nama .' '.'hobinya :';
 # Tampilkan seluruh data hobinya
 foreach ($anggota->hobi as $list)
@@ -45,5 +50,5 @@ Route::get('/blade-sample', function(){
 });
 
 
-Route::post('home/attend', 'HomeController@attend');
-Route::post('home/addAgendaDay', 'HomeController@addAgendaDay');
+Route::post('attendance/attend', 'AttendanceController@attend');
+Route::post('attendance/addAgendaDay', 'AttendanceController@addAgendaDay');

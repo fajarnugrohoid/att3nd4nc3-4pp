@@ -4,11 +4,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller {
+class EmployeeController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Home Controller
+	| Employee Controller
 	|--------------------------------------------------------------------------
 	|
 	| This controller renders your application's "dashboard" for users that
@@ -34,7 +34,17 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		return view('employee/list');
 	}
 
+	public function attend(Request $request){
+		$data = $request->all(); // This will get all the request data.
+		//dd($data); // This will dump and die
+		return response()->json($data);
+	}
+
+	public function addAgendaDay(Request $request){
+		$data = $request->all();
+		return response()->json($data);
+	}
 }

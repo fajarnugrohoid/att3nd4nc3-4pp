@@ -40,6 +40,17 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+  
+  <!-- jQuery 2.2.3 -->
+  <script src="{{ asset('/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="{{ asset('/adminlte/plugins/jQuery/jquery-ui.min.js') }}"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
+  <!-- Bootstrap 3.3.6 -->
+  <script src="{{ asset('/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -342,7 +353,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Announcement</a></li>
+            <li class="active"><a href="{{ url('home') }}"><i class="fa fa-circle-o"></i> Announcement</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -354,7 +365,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Attendance</a></li>
+            <li><a href="{{ url('attendance') }}"><i class="fa fa-circle-o"></i> Attendance</a></li>
             <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Paid Leave</a></li>
             <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Job Detail</a></li>
           </ul>
@@ -369,7 +380,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Employees</a></li>
+            <li><a href="{{ url('employee') }}"><i class="fa fa-circle-o"></i> Employees</a></li>
             <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Employees</a></li>
           </ul>
         </li>
@@ -631,16 +642,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.2.3 -->
-<script src="{{ asset('/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('/adminlte/plugins/jQuery/jquery-ui.min.js') }}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{ asset('/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- Morris.js charts -->
 <script src="{{ asset('/adminlte/plugins/raphael/raphael-min.js') }}"></script>
 <!-- Sparkline -->
@@ -702,7 +703,7 @@
 				if (event.type=='month'){
 					if (start.format()==datenow){
 						$.ajax({
-				            url: "home/attend",
+				            url: "attendance/attend",
 				            type: "post",
 				            data: {
 				                start: start.format(),
@@ -739,7 +740,7 @@
 										allDay: false};
 					if (title) {
 						$.ajax({
-				            url: "home/addAgendaDay",
+				            url: "attendance/addAgendaDay",
 				            type: "post",
 				            data: {
 				            	title: title,
